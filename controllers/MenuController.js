@@ -86,4 +86,8 @@ var d = Date.now();
     console.log(this.convertTimestamp(d));
     this.main();
   }
+
+  getContactCount(){
+    return this.contacts.length;
+  }
  }
