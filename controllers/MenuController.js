@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+var d = Date.now();
 
  module.exports = class MenuController {
    constructor(){
@@ -9,6 +10,7 @@ const inquirer = require('inquirer');
         message: "Please choose from an option below: ",
         choices: [
           "Add new contact",
+          "Get time and date",
           "Exit"
         ]
       }
@@ -22,6 +24,9 @@ const inquirer = require('inquirer');
        switch(response.mainMenuChoice){
          case "Add new contact":
            this.addContact();
+           break;
+         case "Get time and date":
+           this.getDate();
            break;
          case "Exit":
            this.exit();
@@ -48,5 +53,37 @@ const inquirer = require('inquirer');
   exit(){
     console.log("Thanks for using AddressBloc!");
     process.exit();
+  }
+
+  convertTimestamp(timestamp) {
+    var d = new Date(timestamp),
+      year = d.getFullYear(),
+      month = ('0' + (d.getMonth() + 1)).slice(-2),
+      day = ('0' + d.getDate()).slice(-2),
+      hh = d.getHours(),
+      hour = hh,
+      minutes = ('0' + d.getMinutes()).slice(-2),
+      ampm = 'AM',
+      time;
+        
+    if (hh > 12) {
+      hour = hh - 12;
+      ampm = 'PM';
+    } else if (hh === 12) {
+      hour = 12;
+      ampm = 'PM';
+    } else if (hh == 0) {
+      hour = 12;
+    }
+  
+    time = year + '-' + month + '-' + day + ', ' + hour + ':' + minutes + ' ' + ampm;
+      
+    return time;
+  }
+
+  getDate(){
+    this.clear();
+    console.log(this.convertTimestamp(d));
+    this.main();
   }
  }
