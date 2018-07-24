@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const ContactController = require("./ContactController");
 var d = Date.now();
 
  module.exports = class MenuController {
@@ -14,8 +15,8 @@ var d = Date.now();
           "Exit"
         ]
       }
-    ];
-    this.contacts = [];
+    ]
+    this.book = new ContactController();
    }
 
    main(){
@@ -46,8 +47,15 @@ var d = Date.now();
 
   addContact(){
     this.clear();
-    console.log('addContact called');
-    this.main();
+    inquirer.prompt(this.book.addContactQuestions).then((answers) => {
+      this.book.addContact(answers.name, answers.phone).then((contact) => {
+        console.log("Contact added successfully!");
+        this.main();
+      }).catch((err) => {
+        console.log(err);
+        this.main();
+      });
+    });
   }
 
   exit(){
@@ -85,10 +93,6 @@ var d = Date.now();
     this.clear();
     console.log(this.convertTimestamp(d));
     this.main();
-  }
-
-  getContactCount(){
-    return this.contacts.length;
   }
 
   remindMe(){
