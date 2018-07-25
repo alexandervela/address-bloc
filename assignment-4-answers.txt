@@ -1,0 +1,17 @@
+Exercises
+
+1. Performing a search of a sorted by name IRS database for a taxpayer name
+
+A: I would perform a binary search because the list is sorted allowing me to use a binary search without having to sort it first. As well as the IRS database potentially having millions of names to search through, meaning the binary method would be the most effective. 
+
+2. Searching through an unsorted list containing the days of the weekend
+
+A: I would perform an iterative search because the list is unsorted, which means I would have to sort it first if I intend to use a binary search. The list only contains the days of the weekend which means it is small, and therefore this is no reason to take the extra steps to use a binary search.
+
+3. Given a list of the planets in the Milky Way in ascending order by size, search for a planet with a given size
+
+A: I would perform a binary search because the list is sorted allowing me to use a binary search without having to sort it first. The Milky Way is an extensive collection of planets, so the binary method would be the most effective.
+
+4. Searching for a checkpoint name in an unsorted list of Bloc checkpoints
+
+A: I would perform a binary search because the while list is unsorted, it contains almost 200 checkpoints in total. So it is worth the extra step of sorting the list first and then implementing a binary search on the sorted list rather than iteratively searching through every single checkpoint until the target checkpoint is reached.
